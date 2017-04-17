@@ -101,10 +101,12 @@
     <Compile Include="BaseRust.cs" />
     <Compile Include="Inventory\AInventory.cs" />
     <Compile Include="Map\APath.cs" />
+    <Compile Include="NPC\APlayerAI.cs" />
     <Compile Include="Player\AMovment.cs" />
     <Compile Include="Player\APlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
