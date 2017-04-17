@@ -7,7 +7,7 @@ using Facepunch;
 
 namespace Allowerd.Libiray.System
 {
-    public class TimeWarning : IDisposable
+    public class TimeExecuting : IDisposable
     {
         public static bool Enabled;
 
@@ -27,13 +27,13 @@ namespace Allowerd.Libiray.System
 
         private bool disposed;
 
-        public static void BeginSample(string name) => TimeWarning.OnBegin?.Invoke(name);
+        public static void BeginSample(string name) => TimeExecuting.OnBegin?.Invoke(name);
 
-        public static void EndSample() => TimeWarning.OnEnd?.Invoke();
+        public static void EndSample() => TimeExecuting.OnEnd?.Invoke();
 
-        public static TimeWarning New(string name, int MaxMilisecond = 50)
+        public static TimeExecuting New(string name, int MaxMilisecond = 50)
         {
-            TimeWarning timeWarning = Pool.Get<TimeWarning>();
+            TimeExecuting timeWarning = Pool.Get<TimeExecuting>();
             timeWarning.Start(name , MaxMilisecond);
             return timeWarning;
         }
@@ -78,8 +78,8 @@ namespace Allowerd.Libiray.System
                     flag ? " [GARBAGE COLLECT]" : ""
                 });
             }
-            TimeWarning timeWarning = this;
-            Pool.Free<TimeWarning>(ref timeWarning);
+            TimeExecuting timeWarning = this;
+            Pool.Free<TimeExecuting>(ref timeWarning);
         }
     }
 }
