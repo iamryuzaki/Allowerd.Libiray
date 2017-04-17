@@ -27,41 +27,26 @@ namespace Allowerd.Libiray.System
 
         private bool disposed;
 
-        public static void BeginSample(string name)
-        {
-            if (TimeWarning.OnBegin != null)
-            {
-                TimeWarning.OnBegin(name);
-            }
-        }
+        public static void BeginSample(string name) => TimeWarning.OnBegin?.Invoke(name);
 
-        public static void EndSample()
-        {
-            if (TimeWarning.OnEnd != null)
-            {
-                TimeWarning.OnEnd();
-            }
-        }
+        public static void EndSample() => TimeWarning.OnEnd?.Invoke();
 
-        public static TimeWarning New(string name, float MaxTime = 0f)
+        public static TimeWarning New(string name, int MaxMilisecond = 50)
         {
             TimeWarning timeWarning = Pool.Get<TimeWarning>();
-            timeWarning.Start(name);
+            timeWarning.Start(name , MaxMilisecond);
             return timeWarning;
         }
 
-        private void Start(string name, float MaxTime = 0f)
+        private void Start(string name, int MaxMilisecond = 50)
         {
             this.warningName = name;
             this.stopwatch.Reset();
             this.stopwatch.Start();
             this.gcCount = GC.CollectionCount(0);
-
+            this.warningMS = MaxMilisecond;
             this.disposed = false;
-            if (TimeWarning.OnBegin != null)
-            {
-                TimeWarning.OnBegin(name);
-            }
+            BeginSample(name);
         }
          
         void IDisposable.Dispose()
@@ -71,12 +56,9 @@ namespace Allowerd.Libiray.System
                 return;
             }
             this.disposed = true;
-            if (TimeWarning.OnEnd != null)
-            {
-                TimeWarning.OnEnd();
-            }
+            EndSample();
             bool flag = this.gcCount != GC.CollectionCount(0);
-            if (stopwatch.Elapsed.TotalMilliseconds >= 50)
+            if (stopwatch.Elapsed.TotalMilliseconds >= this.warningMS)
             {
                 UnityEngine.Debug.LogErrorFormat("TimeExecuting: <{0}> took {1:0.00} ms ({2:0} ticks){3}", new object[]
                 {
