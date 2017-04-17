@@ -63,7 +63,7 @@ namespace Allowerd.Libiray.System
                 TimeWarning.OnBegin(name);
             }
         }
-
+         
         void IDisposable.Dispose()
         {
             if (this.disposed)
@@ -86,13 +86,16 @@ namespace Allowerd.Libiray.System
                     flag ? " [GARBAGE COLLECT]" : ""
                 });
             }
-            UnityEngine.Debug.LogWarningFormat("TimeExecuting: <{0}> took {1:0.00} ms ({2:0} ticks){3}", new object[]
+            else
             {
+                UnityEngine.Debug.LogWarningFormat("TimeExecuting: <{0}> took {1:0.00} ms ({2:0} ticks){3}", new object[]
+                {
                     this.warningName,
                     this.stopwatch.Elapsed.TotalMilliseconds,
                     this.stopwatch.Elapsed.Ticks,
                     flag ? " [GARBAGE COLLECT]" : ""
-            });
+                });
+            }
             TimeWarning timeWarning = this;
             Pool.Free<TimeWarning>(ref timeWarning);
         }
