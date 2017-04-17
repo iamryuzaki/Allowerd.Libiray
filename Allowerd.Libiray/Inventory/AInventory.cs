@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Allowerd.Libiray.Inventory
 {
-    public class Inventory
+    public class AInventory
     {
         public enum ETypeInventory
         {

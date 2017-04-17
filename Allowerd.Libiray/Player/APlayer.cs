@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Allowerd.Libiray.Player
 {
-    public class Player
+    public class APlayer
     {
         public static BasePlayer Create(string displayname, Vector3 position, Quaternion rotation, float min_hp = 100, float max_hp = 100, ulong steamID = 1L)
         {
@@ -19,7 +19,7 @@ namespace Allowerd.Libiray.Player
             return result;
         }
 
-        public static void GiveItem(BasePlayer player, int itemid, Inventory.Inventory.ETypeInventory type = Inventory.Inventory.ETypeInventory.Main, int min_condition = 100, int max_condition = 100, int min_count = 1, int max_count = 1, int min_ammo = 0, int max_ammo = 1)
+        public static void GiveItem(BasePlayer player, int itemid, Inventory.AInventory.ETypeInventory type = Inventory.AInventory.ETypeInventory.Main, int min_condition = 100, int max_condition = 100, int min_count = 1, int max_count = 1, int min_ammo = 0, int max_ammo = 1)
         {
             Item item = ItemManager.CreateByItemID(itemid, UnityEngine.Random.Range(min_count, max_count));
             item.condition = UnityEngine.Random.Range((item.maxCondition / 100 * min_condition), (item.maxCondition / 100 * max_condition));
@@ -28,13 +28,13 @@ namespace Allowerd.Libiray.Player
                 weapon.primaryMagazine.contents = UnityEngine.Random.Range(min_ammo, max_ammo);
             switch (type)
             {
-                case Inventory.Inventory.ETypeInventory.Main:
+                case Inventory.AInventory.ETypeInventory.Main:
                     player.inventory.GiveItem(item, player.inventory.containerMain);
                     break;
-                case Inventory.Inventory.ETypeInventory.Belt:
+                case Inventory.AInventory.ETypeInventory.Belt:
                     player.inventory.GiveItem(item, player.inventory.containerBelt);
                     break;
-                case Inventory.Inventory.ETypeInventory.Wear:
+                case Inventory.AInventory.ETypeInventory.Wear:
                     player.inventory.GiveItem(item, player.inventory.containerWear);
                     break;
             }

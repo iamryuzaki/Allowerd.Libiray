@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Allowerd.Libiray.Player
 {
-    public class Movment
+    public class AMovment
     {
         public static void SetRotation(BasePlayer player, Vector3 eulerAngles) => BaseRust.BasePlayer_FiledInfo_viewAngles.SetValue(player, eulerAngles);
 

@@ -99,10 +99,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseRust.cs" />
-    <Compile Include="Inventory\Inventory.cs" />
-    <Compile Include="Map\Path.cs" />
-    <Compile Include="Player\Movment.cs" />
-    <Compile Include="Player\Player.cs" />
+    <Compile Include="Inventory\AInventory.cs" />
+    <Compile Include="Map\APath.cs" />
+    <Compile Include="Player\AMovment.cs" />
+    <Compile Include="Player\APlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

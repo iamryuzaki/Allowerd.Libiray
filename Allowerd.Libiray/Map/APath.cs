@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Allowerd.Libiray.Map
 {
-    public class Path
+    public class APath
     {
         public static Vector3 GetGround(Vector3 point)
         {
