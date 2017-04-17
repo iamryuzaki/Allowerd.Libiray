@@ -53,5 +53,5 @@ namespace Allowerd.Libiray.NPC
 
         }
         #endregion
-    }
+    } 
 }
