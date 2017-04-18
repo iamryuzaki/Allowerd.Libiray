@@ -23,6 +23,8 @@ namespace Allowerd.Libiray.NPC
         /// </summary>
         public float RateMaxHeight { get; set; } = 1f;
 
+        public BasePlayer Player { get; private set; }
+
         private float m_tickrateupdate = 0f;
         private float m_timerateupdatepersecond = 0.1f;
         private float m_timeratemoveingspeed => this.RateMoveingSpeed * this.m_timerateupdatepersecond;
@@ -31,7 +33,7 @@ namespace Allowerd.Libiray.NPC
         #region [Method] Awake
         private void Awake()
         {
-
+            this.Player = this.gameObject.GetComponent<BasePlayer>();
         }
         #endregion
 

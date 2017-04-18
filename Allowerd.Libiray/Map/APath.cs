@@ -17,7 +17,7 @@ namespace Allowerd.Libiray.Map
                 return Vector3.zero;
         }
 
-        public Vector3 GetBuildingForGround(Vector3 pointGround)
+        public static Vector3 GetBuildingForGround(Vector3 pointGround)
         {
             RaycastHit hitInfo;
             if (Physics.Raycast(new Ray(new Vector3(pointGround.x, pointGround.y + 100, pointGround.z), Vector3.down), out hitInfo, float.PositiveInfinity, BaseRust.Layer_Building))

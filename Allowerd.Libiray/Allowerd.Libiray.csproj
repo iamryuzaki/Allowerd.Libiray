@@ -102,10 +102,10 @@
     <Compile Include="Inventory\AInventory.cs" />
     <Compile Include="Map\APath.cs" />
     <Compile Include="NPC\APlayerAI.cs" />
-    <Compile Include="Player\AMovment.cs" />
+    <Compile Include="AMovment.cs" />
     <Compile Include="Player\APlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="System\TimeExecut.cs" />
+    <Compile Include="System\TimeExecute.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
